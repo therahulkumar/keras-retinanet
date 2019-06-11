@@ -1,0 +1,12 @@
+FROM tensorflow/tensorflow:latest-gpu-py3
+
+WORKDIR /home/retinanet
+
+RUN apt-get update -y && \
+    apt-get install git -y && \
+    apt-get install -y libsm6 libxext6 libxrender-dev && \
+    git clone https://github.com/fizyr/keras-retinanet.git && \
+    pip install numpy && \
+    cd keras-retinanet && \
+    pip install . && \
+    pip install tensorflow==1.13.1 
